@@ -1,0 +1,15 @@
+version: '3.3'
+
+services:
+  business-central-workbench:
+    image: hrabosch.droolsrules:latest
+    ports:
+      - 8001:8001
+      - 8080:8080
+    container_name: business-central-workbench
+    networks:
+      - local-drools-network
+
+networks:
+  local-drools-network:
+    name: local-drools-network
