@@ -7,6 +7,7 @@ USER jboss
 
 COPY --chown=jboss etc/jbpm-custom.cli $JBOSS_HOME/bin/
 COPY --chown=jboss etc/kie-fs-realm-users $JBOSS_HOME/standalone/configuration/kie-fs-realm-users
+COPY --chown=jboss etc/standalone.xml $JBOSS_HOME/standalone/configuration/
 
 RUN mkdir -m 700 ~/.ssh
 
