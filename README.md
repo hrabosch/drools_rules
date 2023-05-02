@@ -1,5 +1,7 @@
 # SETUP
 
+_NOTE: In case of `JBossAS process *** received KILL signal` error on container, increase a memory limits for a docker containers._
+
 For running as example with provided docker-compose.
 
 ## Prepare remote Git repository
