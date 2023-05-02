@@ -9,14 +9,9 @@ services:
     container_name: business-central-workbench
     volumes:
       - ./wb-git:/opt/jboss/wildfly/bin/.niogit:Z
+      - ./.m2:/opt/jboss/.m2/
     networks:
       - local-drools-network
-    deploy:
-      resources:
-        limits:
-          memory: 2048M
-        reservations:
-          memory: 2048M
   gitea:
     image: gitea/gitea:latest
     container_name: gitea
@@ -40,7 +35,10 @@ services:
       - 8088:8080
     networks:
       - local-drools-network
-
+    volumes:
+      - ./.m2:/opt/jboss/.m2/
+    depends_on:
+      - business-central-workbench
 networks:
   local-drools-network:
     name: local-drools-network

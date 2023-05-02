@@ -1,2 +1,3 @@
 docker/gitea-data/*
 docker/wb-git/*
+docker/.m2/*

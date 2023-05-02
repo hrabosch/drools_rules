@@ -2,7 +2,7 @@ FROM jboss/kie-server:latest
 
 ####### ENVIRONMENT ############
 # ENV KIE_SERVER_ID kie-server
-ENV KIE_SERVER_LOCATION http://localhost:8080/kie-server/services/rest/server
+ENV KIE_SERVER_LOCATION http://kie-server:8080/kie-server/services/rest/server
 ENV KIE_SERVER_USER kieserver
 ENV KIE_SERVER_PWD kieserver1!
 ENV KIE_SERVER_CONTROLLER_USER admin
