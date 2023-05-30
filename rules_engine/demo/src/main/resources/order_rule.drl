@@ -1,0 +1,19 @@
+global com.example.demo.model.Order order;
+dialect  "mvel"
+
+
+rule "Check order quantity"
+@Product("OPTIONS")
+    when
+        Order(quantity > account.perOrderAmountLimit);
+    then
+      	order.setEliable(false);
+end
+
+rule "Check order symbols"
+@Product("EQUITY")
+    when
+        Order(account.allowedSymbols not contains symbol);
+    then
+      	order.setEliable(false);
+end
