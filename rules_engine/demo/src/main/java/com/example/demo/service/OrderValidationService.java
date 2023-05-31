@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import java.util.Map;
 
+import com.example.demo.configuration.PpcomAgendaFilter;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.rule.AgendaFilter;
@@ -31,19 +32,7 @@ public class OrderValidationService {
         KieSession kieSession = kieContainer.newKieSession();
         kieSession.setGlobal("order", order);
         kieSession.insert(order);
-        kieSession.fireAllRules(new AgendaFilter() {
-
-            @Override
-            public boolean accept(Match match) {
-                Map<String, Object> metadata = match.getRule().getMetaData();
-                if (orderRequest.getProductTypes().contains(metadata.get("Product"))
-                        || metadata.get("Product") == null) {
-                    return true;
-                }
-                return false;
-            }
-
-        });
+        kieSession.fireAllRules(new PpcomAgendaFilter(orderRequest));
         kieSession.dispose();
         return order.getEliable();
     }
